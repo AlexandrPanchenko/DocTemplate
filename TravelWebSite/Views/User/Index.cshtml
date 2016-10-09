@@ -1,0 +1,28 @@
+﻿@using TravelWebSite.Models
+@model IEnumerable<Document> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrapper">
+    <label for="name">@ViewBag.Error</label>
+
+    <div id="latest" class="clear">
+       
+@foreach (var item in Model)
+{
+        <!-- All templates page-->
+        <article class="article bgded clear" style="background-image:url('~/Content/images/demo/latest/01.png');">
+            <div class="wrap">
+                <h3 class="heading">@item.Title</h3>
+                <br/>
+                <p><a class="btn mt-green" href="@Url.Action("FillPage", new {id=item.DocumentID})">Завантажити</a></p>
+            </div>
+        </article>
+}
+
+    </div>
+</div>
+
+
+

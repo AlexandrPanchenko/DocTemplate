@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TravelWebSite.Models.Document>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!-- admin panel  -->
+<div class="wrapper row3">
+    <div class="lrspace">
+        <main class="container clear">
+            <p>
+                @Html.ActionLink("Створити новий документ", "Create")
+            </p>
+            <div class="scrollable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Title)</th>
+                            <th>@Html.DisplayNameFor(model => model.Count)</th>
+                            <th><i class="fa fa-2x fa-pencil"></i></th>
+                            <th><i class="fa fa-2x fa-file-pdf-o"></i></th>
+                            <th><i class="fa fa-2x fa-trash-o"></i></th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model)
+                   {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentID })
+                            </td>
+                            <td>
+                             @Html.ActionLink("Show pdf", "Details", new { id = item.DocumentID })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            </main>
+        </div>
+    </div>

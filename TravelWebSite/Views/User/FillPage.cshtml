@@ -1,0 +1,59 @@
+﻿@using TravelWebSite.Models
+@model TravelWebSite.Models.Document
+
+@{
+    ViewBag.Title = "FillPage";
+}
+
+<div class="wrapper row3">
+    <div class="lrspace">
+        <main class="container clear">
+            <!-- input fields page -->
+           
+            <div class="content">
+                
+                <h2>Заповніть поля</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.DocumentID)
+                    @Html.HiddenFor(model => model.Title)
+
+                    @Html.HiddenFor(model => model.Count)
+                    @Html.HiddenFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+
+                    foreach (Tag item in ViewBag.EmptyFields)
+                    {
+                        <input type="hidden" name="titleFields" value="@item.Name" />
+                    }
+
+                    foreach (Tag item in ViewBag.Fields)
+                    {
+                        <div id="comments">
+                            <div class="one_third first">
+                                <label for="name">@item.Name</label>
+                                <input type="text" name="inputFields" value="" /><br />
+                                
+                            </div>
+                        </div>
+                    }
+                    <div id="comments">
+                        <div class="one_third first">
+                            <div>
+                                <input name="submit" type="submit" value="Відправити">
+                            </div>
+                         </div>
+
+                     </div>
+                            }
+
+                       
+              </div>
+ 
+                        <div class="clear"></div>
+        </main>
+    </div>
+</div>
+
+
